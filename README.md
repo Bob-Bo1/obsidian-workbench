@@ -1,0 +1,64 @@
+# Obsidian Workbench for DSH
+
+在 DeepSeek Harness 内打开一个 Obsidian 风格的三栏工作台：
+
+- 左侧：当前 Obsidian 仓库的目录和文件
+- 中间：Markdown 编辑、预览和保存
+- 右侧：当前 DSH 会话，可围绕正在查看的笔记提问
+- 支持拖动三栏分隔线、滚轮滚动、模型切换和权限切换
+
+当前版本面向 Windows + DSH Web profile。它读取本机 Obsidian 配置中的仓库，不会启动 Obsidian 客户端。
+
+## 安装
+
+先下载或克隆本仓库，然后把插件目录链接到 DSH：
+
+```powershell
+git clone https://github.com/Bob-Bo1/obsidian-workbench.git D:\Tools\obsidian-workbench
+dsh plugin --profile web add link:D:\Tools\obsidian-workbench
+```
+
+随后在 Web profile 的 `cordis.patch.yml` 中加入：
+
+```yaml
+- insert:
+    - id: obsidian-workbench
+      name: 'obsidian-workbench'
+```
+
+重启 DSH Web profile，在左下角打开 Obsidian 工作台。
+
+## 仓库选择
+
+默认读取 Windows 当前 Obsidian 配置中的打开仓库；也可以通过环境变量指定仓库：
+
+```powershell
+$env:OBSIDIAN_VAULT_PATH = 'D:\你的仓库路径'
+```
+
+环境变量优先级高于 Obsidian 自动识别结果。
+
+## 安全边界
+
+- 只开放仓库根目录内的 Markdown、文本和图片文件。
+- `.obsidian` 和其他隐藏目录不会通过接口开放。
+- 会拒绝 `..` 路径、符号链接和 junction 指向仓库外部的路径。
+- 单个笔记或保存内容超过 4 MB 时会被拒绝。
+- 插件接口默认只供 DSH 同源页面使用，不开放通配跨域访问。
+
+## 当前限制
+
+- 预览支持标题、空行和 Wiki 链接的基础展示。
+- 暂未复刻 Dataview、Tasks、Canvas 和其他 Obsidian 插件运行时。
+- 当前只支持编辑已有文件，不提供新建、重命名和删除文件功能。
+- 仓库变化需要重新展开目录或重新打开工作台后查看。
+
+## 开发检查
+
+在插件目录执行：
+
+```powershell
+npm run check
+```
+
+该命令会检查 Host 和 Client 两部分 JavaScript 语法。

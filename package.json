@@ -1,0 +1,30 @@
+{
+  "name": "obsidian-workbench",
+  "version": "0.1.0-beta.1",
+  "description": "在 DeepSeek Harness 内浏览、编辑并保存 Obsidian Markdown 仓库。",
+  "keywords": ["deepseek-harness", "dsh", "obsidian", "markdown", "vault"],
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "files": ["lib", "README.md", "LICENSE", "CHANGELOG.md", "package.json"],
+  "scripts": {
+    "check": "node --check lib/index.js && node --check lib/client.js"
+  },
+  "dsh": {
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-conversation",
+        "@deepseek-ai/dsh-client-ui-model-selection",
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-locale"
+      ]
+    }
+  },
+  "license": "MIT"
+}
