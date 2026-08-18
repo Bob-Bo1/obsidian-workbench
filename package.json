@@ -10,7 +10,13 @@
     "url": "https://github.com/Bob-Bo1/obsidian-workbench/issues"
   },
   "homepage": "https://github.com/Bob-Bo1/obsidian-workbench#readme",
-  "keywords": ["deepseek-harness", "dsh", "obsidian", "markdown", "vault"],
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "obsidian",
+    "markdown",
+    "vault"
+  ],
   "type": "module",
   "main": "lib/index.js",
   "exports": {
@@ -18,7 +24,14 @@
     "./client": "./lib/client.js",
     "./package.json": "./package.json"
   },
-  "files": ["lib", "README.md", "LICENSE", "CHANGELOG.md", "cordis.patch.yml", "package.json"],
+  "files": [
+    "lib",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "cordis.patch.yml",
+    "package.json"
+  ],
   "scripts": {
     "check": "node --check lib/index.js && node --check lib/client.js"
   },
@@ -37,5 +50,12 @@
       ]
     }
   },
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@codemirror/commands": "^6.11.0",
+    "@codemirror/lang-markdown": "^6.5.2",
+    "@codemirror/language": "^6.12.4",
+    "@codemirror/state": "^6.7.1",
+    "@codemirror/view": "^6.43.9"
+  }
 }
