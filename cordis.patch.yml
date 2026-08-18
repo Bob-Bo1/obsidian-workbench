@@ -1,0 +1,4 @@
+# DSH profile layer: register the plugin's Host and browser halves.
+- insert:
+    - id: obsidian-workbench
+      name: obsidian-workbench

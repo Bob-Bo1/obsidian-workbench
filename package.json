@@ -2,6 +2,14 @@
   "name": "obsidian-workbench",
   "version": "0.1.0-beta.1",
   "description": "在 DeepSeek Harness 内浏览、编辑并保存 Obsidian Markdown 仓库。",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bob-Bo1/obsidian-workbench.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Bob-Bo1/obsidian-workbench/issues"
+  },
+  "homepage": "https://github.com/Bob-Bo1/obsidian-workbench#readme",
   "keywords": ["deepseek-harness", "dsh", "obsidian", "markdown", "vault"],
   "type": "module",
   "main": "lib/index.js",
@@ -10,11 +18,14 @@
     "./client": "./lib/client.js",
     "./package.json": "./package.json"
   },
-  "files": ["lib", "README.md", "LICENSE", "CHANGELOG.md", "package.json"],
+  "files": ["lib", "README.md", "LICENSE", "CHANGELOG.md", "cordis.patch.yml", "package.json"],
   "scripts": {
     "check": "node --check lib/index.js && node --check lib/client.js"
   },
   "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
     "client": {
       "platform": "web",
       "inject": [
