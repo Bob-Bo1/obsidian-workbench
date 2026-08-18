@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- 支持点击中间顶部的笔记标题直接重命名，回车或失去焦点保存，Esc 取消。
 - 修复打开笔记时编辑器初始化函数名错误导致插件崩溃、入口消失的问题。
 - 修复 DSH 客户端无法加载 CodeMirror 外部模块的问题，发布前会把编辑器依赖打包进 Client 文件。
 - 将笔记编辑器重构为 CodeMirror 6 单文档编辑器，增加接近 Obsidian Live Preview 的 Markdown 标记隐藏与光标态显示。
