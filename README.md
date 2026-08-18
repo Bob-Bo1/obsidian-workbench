@@ -3,7 +3,7 @@
 在 DeepSeek Harness 内打开一个 Obsidian 风格的三栏工作台：
 
 - 左侧：当前 Obsidian 仓库的目录和文件
-- 中间：直接在 Markdown 预览界面编辑，内容自动保存
+- 中间：基于 CodeMirror 6 的 Markdown Live Preview 编辑器，内容自动保存
 - 右侧：当前 DSH 会话，可围绕正在查看的笔记提问
 - 右侧顶部可切换 DSH 最近对话，并按工作区新建对话
 - 支持拖动三栏分隔线、滚轮滚动、模型切换和权限切换
@@ -54,7 +54,7 @@ $env:OBSIDIAN_VAULT_PATH = 'D:\你的仓库路径'
 - 暂未复刻 Dataview、Tasks、Canvas 和其他 Obsidian 插件运行时。
 - 当前支持新建 Markdown 笔记、新建文件夹，以及把笔记或文件夹移动到仓库内其他位置。
 - 支持按文件名和正文搜索 Markdown、Markdown 扩展名及文本笔记。
-- 编辑区默认显示渲染后的 Markdown；点击标题或正文块可进入对应的 Markdown 编辑状态，输入 `##X##` 后会自动渲染为加粗文字，点击内容可再次编辑原始标记。
+- 编辑区使用单个 CodeMirror 文档处理整篇笔记；光标所在行显示 Markdown 标记，离开后隐藏标记，`##X##` 会显示为加粗文字。
 - 空白笔记首次点击会进入加粗主题输入，按回车后进入普通正文输入；支持行内 `##X##` 加粗。
 - 笔记修改使用自动保存，不再提供手动保存按钮。
 - 右键菜单支持删除笔记或文件夹，内容会先移入插件回收站；删除文件夹会连同内部内容一起移动，并需要确认，删除后可立即撤销。
@@ -70,4 +70,4 @@ $env:OBSIDIAN_VAULT_PATH = 'D:\你的仓库路径'
 npm run check
 ```
 
-该命令会检查 Host 和 Client 两部分 JavaScript 语法。
+该命令会重新打包 CodeMirror 客户端文件，并检查 Host、源码 Client 和生成 Client 的 JavaScript 语法。

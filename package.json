@@ -26,6 +26,7 @@
   },
   "files": [
     "lib",
+    "scripts",
     "README.md",
     "LICENSE",
     "CHANGELOG.md",
@@ -33,7 +34,8 @@
     "package.json"
   ],
   "scripts": {
-    "check": "node --check lib/index.js && node --check lib/client.js"
+    "build:client": "node scripts/build-client.mjs",
+    "check": "node --check lib/index.js && node --check lib/client-source.js && npm run build:client && node --check lib/client.js"
   },
   "dsh": {
     "bundle": {
@@ -51,11 +53,12 @@
     }
   },
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "@codemirror/commands": "^6.11.0",
     "@codemirror/lang-markdown": "^6.5.2",
     "@codemirror/language": "^6.12.4",
     "@codemirror/state": "^6.7.1",
-    "@codemirror/view": "^6.43.9"
+    "@codemirror/view": "^6.43.9",
+    "esbuild": "^0.25.9"
   }
 }
